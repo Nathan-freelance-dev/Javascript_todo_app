@@ -44,7 +44,7 @@ body .info_btn {
 
 body .alert_box {
   position: fixed;
-  width: 400px;
+  width: 500px;
   margin: 20px;
   top: 0%;
   left: 50%;
@@ -64,14 +64,6 @@ body .btn-primary {
   border-color: #3A9BDC !important;
 }
 
-body .input_field {
-  display: none;
-}
-
-body .input_field.show_box {
-  display: block !important;
-}
-
 body .btn {
   -webkit-box-shadow: none !important;
           box-shadow: none !important;
@@ -79,5 +71,9 @@ body .btn {
 
 body .show {
   display: block;
+}
+
+body ul li {
+  padding: 10px;
 }
 /*# sourceMappingURL=style.css.map */

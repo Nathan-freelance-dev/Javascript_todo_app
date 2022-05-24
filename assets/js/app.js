@@ -44,7 +44,7 @@ function currentTime() {
 
 
      timeElement.innerHTML = `${hour} : ${min} ${session}`
-     let updateTime = setTimeout(function() {
+     setTimeout(function() {
           currentTime
      }, 1000)
 }
@@ -73,41 +73,63 @@ function hideInstruction() {
      alertBox.classList.remove("show");
 }
 
-// click to show input fields for adding task
-const addTaskBtn = document.getElementById("addTask");
-const inputBox = document.getElementById("input_box");
-
-addTaskBtn.addEventListener('click', ()=> {
-     inputBox.classList.toggle("show_box")
-})
-
 // adding task to table when button is clicked
 
-const submitButton = document.getElementById('submit_button');
+// creating the delete button for each list item
 
-submitButton.addEventListener("click", addTaskName);
+var myNodelist = document.getElementsByTagName("li")
 
-const tabelBody = document.getElementById("tabel_body");
-var nameElement = document.createElement("tr");
-var taskName = document.getElementById('taskName').value;
-var taskTime = document.getElementById('taskTime').value;
-var taskDate = document.getElementById('taskDate').value;
-var taskNameText = document.createTextNode(taskName);
-nameElement.appendChild(taskNameText)
-const alertMessage = document.getElementById("alert"); 
+// loobing through each list
 
-function addTaskName() {
-     tabelBody.appendChild(nameElement);
+var i;
+
+for (i = 0; i < myNodelist.length; i++) {
+     var button = document.createElement("button");
+     var buttonText = document.createTextNode("Delete")
+     button.classList = 'btn btn-danger ms-auto delete'
+
+     button.appendChild(buttonText);
+     myNodelist[i].appendChild(button)
 }
 
-// function checkValidaton() {
-//      if (taskName && taskTime && taskDate === '') {
-//           alertMessage.innerHTML = "You did not enter a task";
-//           alertMessage.classList.remove("d-none");
-//           alertMessage.classList.add("alert-danger");
-//      } else {
-//           alertMessage.innerHTML = "Your task was added successfully";
-//           alertMessage.classList.remove("d-none");
-//           alertMessage.classList.add("alert-success");
-//      }
-// }
+// click to delete button
+var deleteButton = document.getElementsByClassName("delete")
+
+for (i = 0; i < deleteButton.length; i ++) {
+     deleteButton[i].onclick = () => {
+          var mylist = this.parentElement;
+          mylist.classList.add("d-none")
+     }
+}
+
+
+const taskForm = document.getElementById('taskForm');
+
+taskForm.addEventListener("submit", addTaskName);
+function addTaskName(e) {
+     e.preventDefault();
+
+     var ulElement = document.getElementById('myList');
+     var taskElement = document.createElement('li')
+     var taskName = document.getElementById('taskName').value;
+     var taskNameText = document.createTextNode(taskName);
+
+     taskElement.className = "w-100 border-bottom d-flex align-items-center"
+     taskElement.appendChild(taskNameText)
+     
+     ulElement.appendChild(taskElement)
+     
+     var button = document.createElement("button");
+     var buttonText = document.createTextNode("Delete")
+     button.classList = 'btn btn-danger ms-auto delete'
+
+     button.appendChild(buttonText);
+     taskElement.appendChild(button)
+
+     for (i = 0; i < deleteButton.length; i ++) {
+          deleteButton[i].onclick = () => {
+               var mylist = this.parentElement;
+               mylist.classList.add("d-none")
+          }
+     }
+}

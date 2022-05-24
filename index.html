@@ -36,7 +36,7 @@
 
           <!-- alertbox -->
           <div class="alert_box bg-white shadow rounded rounded-2" id="alert_box">
-               <div class="alert_box_header mb-3 p-3 pb-2 border-bottom">
+               <div class="alert_box_header p-3 pb-2 border-bottom">
                     <div class="row">
                          <div class="col">
                               <h5 class="text-muted">
@@ -50,12 +50,18 @@
                     </div>
                </div>
 
-               <div class="text-muted p-2">
-                    <ol>
-                         <li>Click on add todo to add a new todo to the list.</li>
-                         <li>Double click on each todo to check as done</li>
-                         <li>Click delete to erase todo item. <span class="text-danger">Cannot undo action</span></li>
-                    </ol>
+               <div class="text-muted">
+                    <div class="text-muted p-2 border-bottom">
+                         1.) Click the "add task" button to add a new task.
+                    </div>
+
+                    <div class="text-muted p-2 border-bottom">
+                         2.) Click the "done" button to complete a task.
+                    </div>
+
+                    <div class="text-muted p-2">
+                         1.) Click the "delete" button to delete a task.
+                    </div>
                </div>
           </div>
           
@@ -69,12 +75,6 @@
                               <div class="col">
                                    <h3 class="text-dark">Todo app</h3>
                               </div>
-
-                              <div class="col text-end">
-                                   <button class="btn btn-primary" id="addTask">
-                                        Add task
-                                   </button>
-                              </div>
                          </div>
 
                          <div class="input_field mt-3" id="input_box">
@@ -82,50 +82,26 @@
                                    
                               </div>
 
-                              <div class="row">
-                                   <div class="col">
-                                        <input type="text" name="task_name" id="taskName" placeholder="Name" class="form-control" value="">
+                              <form id="taskForm">
+                                   <div class="row">
+                                        <div class="col">
+                                             <input type="text" name="task_name" id="taskName" placeholder="Name" required class="form-control">
+                                        </div>
                                    </div>
-
-                                   <div class="col">
-                                        <input type="time" name="task_name" id="taskTime" placeholder="Time" class="form-control" value="">
+     
+                                   <div class="mt-3">
+                                        <input type="submit" value="Add to task" class="btn btn-primary w-100" id="submit_button" />
                                    </div>
-
-                                   <div class="col">
-                                        <input type="date" name="task_name" id="taskDate" placeholder="Date" class="form-control" value="">
-                                   </div>
-                              </div>
-
-                              <div class="mt-3">
-                                   <button class="btn btn-primary w-100" id="submit_button">
-                                        Submit task
-                                   </button>
-                              </div>
+                              </form>
                          </div>
                     </div>
 
                     <div class="added_tasks">
                          <h5 class="p-3 border-bottom bg-light">Recently added tasks</h5>
 
-                         <table class="table">
-                              <thead>
-                                   <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Task name</th>
-                                        <th scope="col">Time</th>
-                                        <th scope="col">Date</th>
-                                   </tr>
-                              </thead>
-
-                              <tbody id="tabel_body">
-                                   <tr>
-                                        <th>1</th>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
-                                   </tr>
-                              </tbody>
-                         </table>
+                         <ul class="list-unstyled" id="myList">
+                              
+                         </ul>
                     </div>
                </div>
           </div>

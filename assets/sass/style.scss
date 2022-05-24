@@ -39,7 +39,7 @@ body {
 
      .alert_box {
           position: fixed;
-          width: 400px;
+          width: 500px;
           margin: 20px;
           top: 0%;
           left: 50%;
@@ -56,19 +56,18 @@ body {
           border-color: $primary-color !important;
      }
 
-     .input_field {
-          display: none;
-
-          &.show_box {
-               display: block !important;
-          }
-     }
-
      .btn {
           box-shadow: none !important;
      }
      
      .show {
           display: block;
+     }
+
+     ul {
+          li {
+               // border-bottom: 1px solid gray;
+               padding: 10px;
+          }
      }
 }
