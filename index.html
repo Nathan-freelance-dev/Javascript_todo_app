@@ -10,101 +10,84 @@
      </head>
 
      <body>
-          <!-- implementing date and time in the header section -->
-          <header class="header_container text-light">
-               <div class="row">
-                    <div class="col">
-                         <h6 class="fw-normal">
-                              <span class="me-1">Date: </span>
-                              <span id="date_element"></span>
-                         </h6>
-                    </div>
+          <!-- add a new task nav -->
+          <div class="modal_container">
+               <!-- Button trigger modal -->
+               <div class="text-center">
+                    <h1 class="text-light mb-3 text-capitalize fw-bold">
+                         Task tracker
+                    </h1>
+
+                    <button type="button" class="btn btn-light btn-lg" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                         Create a new task
+                    </button>
+               </div>
+
+               <!-- Modal -->
+               <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-fullscreen">
+                         <div class="modal-content">
+                              <div class="modal-header">
+                                   <h5 class="modal-title" id="staticBackdropLabel">Add new task</h5>
+                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body">
+                                   <div class="form_container h-100 align-items-center">
+                                        <div>
+                                             <h1 class="text-primary text-capitalize fw-bold">My task tracking app</h1>
+                                             <div class="text-muted">
+                                                  Add a new task to note down what to do for the day.
+                                             </div>
                     
-                    <div class="col text-end">
-                         <h6 class="fw-normal">
-                              <span class="me-1">Time: </span>
-                              <span id="time_element"></span>
-                         </h6>
-                    </div>
-               </div>
-          </header>
-
-          <!-- instruction toggle -->
-          <button class="btn btn-light info_btn" id="showInstructons">
-               <img src="assets/icons/info-circle.svg" width="100%" alt="info bootsrap icon">
-          </button>
-
-          <!-- alertbox -->
-          <div class="alert_box bg-white shadow rounded rounded-2" id="alert_box">
-               <div class="alert_box_header p-3 pb-2 border-bottom">
-                    <div class="row">
-                         <div class="col">
-                              <h5 class="text-muted">
-                                   Instructions
-                              </h5>
-                         </div>
-     
-                         <div class="text-end col">
-                              <button class="btn btn-primary" id="closeInstructions">Close</button>
-                         </div>
-                    </div>
-               </div>
-
-               <div class="text-muted">
-                    <div class="text-muted p-2 border-bottom">
-                         1.) Click the "add task" button to add a new task.
-                    </div>
-
-                    <div class="text-muted p-2 border-bottom">
-                         2.) Click the "done" button to complete a task.
-                    </div>
-
-                    <div class="text-muted p-2">
-                         1.) Click the "delete" button to delete a task.
-                    </div>
-               </div>
-          </div>
-          
-          <!-- main container for placing items to the center -->
-          <div class="placement">
-
-               <!-- todo container -->
-               <div class="todo_container rounded rounded-2 bg-white shadow ">
-                    <div class="p-4 pt-2 pb-2 border-bottom">
-                         <div class="row">
-                              <div class="col">
-                                   <h3 class="text-dark">Todo app</h3>
-                              </div>
-                         </div>
-
-                         <div class="input_field mt-3" id="input_box">
-                              <div class="alert d-none" id="alert" role="alert">
-                                   
-                              </div>
-
-                              <form id="taskForm">
-                                   <div class="row">
-                                        <div class="col">
-                                             <input type="text" name="task_name" id="taskName" placeholder="Name" required class="form-control">
+                                             <form class="mt-5" id="taskForm">
+                                                  <input type="text" name="task_name" class="form-control w-100" id="taskName" placeholder="Task name" required>
+                    
+                                                  <textarea name="task_description" id="taskDescription" cols="20" class="mt-3 form-control w-100" rows="8" required></textarea>
+                    
+                                                  <input type="submit" class="btn btn-primary mt-3 w-100" value="Submit task">
+                                             </form>
                                         </div>
                                    </div>
-     
-                                   <div class="mt-3">
-                                        <input type="submit" value="Add to task" class="btn btn-primary w-100" id="submit_button" />
-                                   </div>
-                              </form>
+                              </div>
+                              <div class="modal-footer">
+                                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                              </div>
                          </div>
-                    </div>
-
-                    <div class="added_tasks">
-                         <h5 class="p-3 border-bottom bg-light">Recently added tasks</h5>
-
-                         <ul class="list-unstyled" id="myList">
-                              
-                         </ul>
                     </div>
                </div>
           </div>
+
+          <!-- main container -->
+          <main>
+               <!-- implementing date and time in the header section -->
+               <header class="header_container text-dark">
+                    <div class="row">
+                         <div class="col">
+                              <h4 class="fw-normal">
+                                   <span class="me-1">Date: </span>
+                                   <span id="date_element"></span>
+                              </h4>
+                         </div>
+                         
+                         <div class="col text-end">
+                              <h4 class="fw-normal">
+                                   <span class="me-1">Time: </span>
+                                   <span id="time_element"></span>
+                              </h6>
+                         </div>
+                    </div>
+               </header>
+
+               <!-- show added tasks continer -->
+
+               <div class="added_tasks p-3">
+                    <h4 class="text-primary text-capitalize">All added tasks.</h4>
+
+                    <div class="row mt-4" id="listRow">
+                         
+                    </div>
+               </div>
+          </main>
 
           <!-- linking javascript file -->
           <script src="assets/js/app.js"></script>

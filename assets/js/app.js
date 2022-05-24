@@ -51,88 +51,98 @@ function currentTime() {
 
 currentTime()
 
-// click on button to show instruction function
+// submit task function
+const taskForm = document.getElementById("taskForm")
 
-const showInstructionButton = document.getElementById("showInstructons");
-const alertBox = document.getElementById("alert_box");
-const hideInstructionButton = document.getElementById('closeInstructions');
+taskForm.addEventListener("submit", submitTasks);
 
-// show instructions on button click
+// creating delete and done button
+const nodeDiv = document.getElementsByClassName('card_footer');
 
-showInstructionButton.addEventListener('click', showInstruction);
+for (i = 0; i < nodeDiv.length; i ++) {
+     var doneButton = document.createElement('button');
+     var deleteButton = document.createElement("button");
 
-function showInstruction() {
-     alertBox.classList.add("show");
+     var doneButtonText = document.createTextNode("Task done.")
+     var deleteButtonText = document.createTextNode("Delete task.")
+
+     doneButton.className = "btn btn-outline-success me-3 done_btn"
+     deleteButton.className = "btn btn-outline-danger delete_btn"
+
+     doneButton.appendChild(doneButtonText)
+     deleteButton.appendChild(deleteButtonText)
+
+     nodeDiv[i].append(doneButton, deleteButton);
 }
 
-// hide instructions on button click
+// set task to be completed
 
-hideInstructionButton.addEventListener("click", hideInstruction);
+var doneButton = document.getElementsByClassName("done_btn")
 
-function hideInstruction() {
-     alertBox.classList.remove("show");
-}
-
-// adding task to table when button is clicked
-
-// creating the delete button for each list item
-
-var myNodelist = document.getElementsByTagName("li")
-
-// loobing through each list
-
-var i;
-
-for (i = 0; i < myNodelist.length; i++) {
-     var button = document.createElement("button");
-     var buttonText = document.createTextNode("Delete")
-     button.classList = 'btn btn-danger ms-auto delete'
-
-     button.appendChild(buttonText);
-     myNodelist[i].appendChild(button)
-}
-
-// click to delete button
-var deleteButton = document.getElementsByClassName("delete")
-
-for (i = 0; i < deleteButton.length; i ++) {
-     deleteButton[i].onclick = () => {
-          var mylist = this.parentElement;
-          mylist.classList.add("d-none")
+for (i = 0; i < close.length; i++) {
+     doneButton[i].onclick = function() {
+          var div = this.parentElement;
+          div.classList.add("border-top", "border-success", "border-top-3");
      }
 }
 
 
-const taskForm = document.getElementById('taskForm');
-
-taskForm.addEventListener("submit", addTaskName);
-function addTaskName(e) {
+function submitTasks(e) {
      e.preventDefault();
 
-     var ulElement = document.getElementById('myList');
-     var taskElement = document.createElement('li')
-     var taskName = document.getElementById('taskName').value;
-     var taskNameText = document.createTextNode(taskName);
+     const taskNameValue = document.getElementById("taskName").value
+     const taskDescriptionValue = document.getElementById("taskDescription").value
 
-     taskElement.className = "w-100 border-bottom d-flex align-items-center"
-     taskElement.appendChild(taskNameText)
-     
-     ulElement.appendChild(taskElement)
-     
-     var button = document.createElement("button");
-     var buttonText = document.createTextNode("Delete")
-     button.classList = 'btn btn-danger ms-auto delete'
+     var listRow = document.getElementById("listRow");
+     var colSystem = document.createElement('div');
 
-     button.appendChild(buttonText);
-     taskElement.appendChild(button)
+     var task_description_container = document.createElement('div')
+     var task_description_container_footer = document.createElement('div')
 
-     for (i = 0; i < deleteButton.length; i ++) {
-          deleteButton[i].onclick = () => {
-               var mylist = this.parentElement;
-               mylist.classList.add("d-none")
+     var taskNameHead = document.createElement("h2");
+     var taskDescriptionContainer = document.createElement("p");
+
+     colSystem.className = "col-md-4 mt-3";
+     task_description_container.className = "bg-white shadow p-4 pb-0 rounded rounded-3 task_card";
+     task_description_container_footer.className = "p-3 border-top card_footer text-end";
+
+     taskNameHead.className = "text-dark border-bottom";
+     taskDescriptionContainer.className = "text-muted";
+
+     listRow.appendChild(colSystem);
+
+     colSystem.appendChild(task_description_container);
+
+     task_description_container.append(taskNameHead, taskDescriptionContainer, task_description_container_footer);
+
+     taskNameHead.innerHTML = taskNameValue;
+     taskDescriptionContainer.innerHTML = taskDescriptionValue;
+
+
+     document.getElementById("taskName").value = ''
+     document.getElementById("taskDescription").value = ''
+
+
+
+     var doneButton = document.createElement('button');
+     var deleteButton = document.createElement("button");
+
+     var doneButtonText = document.createTextNode("Task done.")
+     var deleteButtonText = document.createTextNode("Delete task.")
+
+     doneButton.className = "btn btn-outline-success me-3 done_btn"
+     deleteButton.className = "btn btn-outline-danger delete_btn"
+
+     doneButton.appendChild(doneButtonText)
+     deleteButton.appendChild(deleteButtonText)
+
+     task_description_container_footer.append(doneButton, deleteButton);
+
+
+     for (i = 0; i < close.length; i++) {
+          doneButton[i].onclick = function() {
+               var div = this.parentElement;
+               div.classList.add("border-top", "border-success", "border-top-3");
           }
      }
 }
-
-
-// try in to fix bug

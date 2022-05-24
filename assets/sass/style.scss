@@ -3,71 +3,73 @@ $primary-color: #3A9BDC;
 
 
 body {
-     background: $primary-color !important;
+     background: #fff !important;
      margin: 0%;
      padding: 0%;
      overflow-x: hidden;
      box-sizing: border-box;
      font-family: 'Source Sans Pro', sans-serif !important;
 
-     .placement {
-          display: flex;
-          height: 100vh;
-          width: 100vw;
-          justify-content: center;
-          align-items: center;
-
-          .todo_container {
-               width: 500px;
-          }
-     }
-     
-     header {
-          padding: 10px 20px;
-          position: fixed;
-          width: 100%;
-          top: 0%;
-          left: 0%;
-     }
-
-     .info_btn {
-          position: fixed;
-          bottom: 0%;
-          right: 0%;
-          margin: 10px;
-     }
-
-     .alert_box {
-          position: fixed;
-          width: 500px;
-          margin: 20px;
-          top: 0%;
-          left: 50%;
-          transform: translateX(-50%) translateY(-150%);
-          transition: .5s ease-in !important;
-
-          &.show {
-               transform: translateX(-50%) translateY(0);
-          }
-     }
-
-     .btn-primary {
-          background: $primary-color !important;
-          border-color: $primary-color !important;
+     .text-primary {
+          color: $primary-color !important;
      }
 
      .btn {
           box-shadow: none !important;
      }
-     
-     .show {
-          display: block;
+
+     // modal styling'
+     .modal_container {
+          height: 300px;
+          background: $primary-color;
+          display: flex;
+          justify-content: center;
+          align-items: center;
      }
 
-     ul {
-          li {
-               // border-bottom: 1px solid gray;
-               padding: 10px;
+     .modal-body {
+          width: 100% !important;
+               justify-content: center;
+               align-items: center;
+               display: flex;
+               height: 100%;
+
+          .form_container {
+               width: 50%;
+
+               div {
+                    width: 100%;
+
+                    .form-control {
+                         padding: 12px;
+                         border-radius: 2px;
+                         box-shadow: none !important;
+
+                         &:focus {
+                              border-color: $primary-color !important;
+                         }
+                    }
+               }
+          }
+     }
+     
+     main {
+          margin-left: 0%;
+          width: 100%;
+
+          header {
+               padding: 10px 20px;
+               width: 100%;
+               top: 0%;
+               left: 0%;
+          }
+
+          .added_tasks {
+               .col-md-4 {
+                    .p-4 {
+                         height: 100% !important;
+                    }
+               }
           }
      }
 }
