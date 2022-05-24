@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+     <head>
+          <meta charset="UTF-8">
+          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Javascript project #1 | Todo app</title>
+          <link rel="stylesheet" href="assets/sass/style.css">
+          <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+     </head>
+
+     <body>
+          <!-- implementing date and time in the header section -->
+          <header class="header_container text-light">
+               <div class="row">
+                    <div class="col">
+                         <h6 class="fw-normal">
+                              <span class="me-1">Date: </span>
+                              <span id="date_element"></span>
+                         </h6>
+                    </div>
+                    
+                    <div class="col text-end">
+                         <h6 class="fw-normal">
+                              <span class="me-1">Time: </span>
+                              <span id="time_element"></span>
+                         </h6>
+                    </div>
+               </div>
+          </header>
+
+          <!-- instruction toggle -->
+          <button class="btn btn-light info_btn" id="showInstructons">
+               <img src="assets/icons/info-circle.svg" width="100%" alt="info bootsrap icon">
+          </button>
+
+          <!-- alertbox -->
+          <div class="alert_box bg-white shadow rounded rounded-2" id="alert_box">
+               <div class="alert_box_header mb-3 p-3 pb-2 border-bottom">
+                    <div class="row">
+                         <div class="col">
+                              <h5 class="text-muted">
+                                   Instructions
+                              </h5>
+                         </div>
+     
+                         <div class="text-end col">
+                              <button class="btn btn-primary" id="closeInstructions">Close</button>
+                         </div>
+                    </div>
+               </div>
+
+               <div class="text-muted p-2">
+                    <ol>
+                         <li>Click on add todo to add a new todo to the list.</li>
+                         <li>Double click on each todo to check as done</li>
+                         <li>Click delete to erase todo item. <span class="text-danger">Cannot undo action</span></li>
+                    </ol>
+               </div>
+          </div>
+          
+          <!-- main container for placing items to the center -->
+          <div class="placement">
+
+               <!-- todo container -->
+               <div class="todo_container rounded rounded-2 bg-white shadow ">
+                    <div class="p-4 pt-2 pb-2 border-bottom">
+                         <div class="row">
+                              <div class="col">
+                                   <h3 class="text-dark">Todo app</h3>
+                              </div>
+
+                              <div class="col text-end">
+                                   <button class="btn btn-primary" id="addTask">
+                                        Add task
+                                   </button>
+                              </div>
+                         </div>
+
+                         <div class="input_field mt-3" id="input_box">
+                              <div class="alert d-none" id="alert" role="alert">
+                                   
+                              </div>
+
+                              <div class="row">
+                                   <div class="col">
+                                        <input type="text" name="task_name" id="taskName" placeholder="Name" class="form-control" value="">
+                                   </div>
+
+                                   <div class="col">
+                                        <input type="time" name="task_name" id="taskTime" placeholder="Time" class="form-control" value="">
+                                   </div>
+
+                                   <div class="col">
+                                        <input type="date" name="task_name" id="taskDate" placeholder="Date" class="form-control" value="">
+                                   </div>
+                              </div>
+
+                              <div class="mt-3">
+                                   <button class="btn btn-primary w-100" id="submit_button">
+                                        Submit task
+                                   </button>
+                              </div>
+                         </div>
+                    </div>
+
+                    <div class="added_tasks">
+                         <h5 class="p-3 border-bottom bg-light">Recently added tasks</h5>
+
+                         <table class="table">
+                              <thead>
+                                   <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Task name</th>
+                                        <th scope="col">Time</th>
+                                        <th scope="col">Date</th>
+                                   </tr>
+                              </thead>
+
+                              <tbody id="tabel_body">
+                                   <tr>
+                                        <th>1</th>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>@mdo</td>
+                                   </tr>
+                              </tbody>
+                         </table>
+                    </div>
+               </div>
+          </div>
+
+          <!-- linking javascript file -->
+          <script src="assets/js/app.js"></script>
+          <script src="assets/js/bootstrap.min.js"></script>
+     </body>
+</html>

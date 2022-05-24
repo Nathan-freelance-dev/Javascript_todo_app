@@ -1,0 +1,74 @@
+$primary-color: #3A9BDC;
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700&display=swap');
+
+
+body {
+     background: $primary-color !important;
+     margin: 0%;
+     padding: 0%;
+     overflow-x: hidden;
+     box-sizing: border-box;
+     font-family: 'Source Sans Pro', sans-serif !important;
+
+     .placement {
+          display: flex;
+          height: 100vh;
+          width: 100vw;
+          justify-content: center;
+          align-items: center;
+
+          .todo_container {
+               width: 500px;
+          }
+     }
+     
+     header {
+          padding: 10px 20px;
+          position: fixed;
+          width: 100%;
+          top: 0%;
+          left: 0%;
+     }
+
+     .info_btn {
+          position: fixed;
+          bottom: 0%;
+          right: 0%;
+          margin: 10px;
+     }
+
+     .alert_box {
+          position: fixed;
+          width: 400px;
+          margin: 20px;
+          top: 0%;
+          left: 50%;
+          transform: translateX(-50%) translateY(-150%);
+          transition: .5s ease-in !important;
+
+          &.show {
+               transform: translateX(-50%) translateY(0);
+          }
+     }
+
+     .btn-primary {
+          background: $primary-color !important;
+          border-color: $primary-color !important;
+     }
+
+     .input_field {
+          display: none;
+
+          &.show_box {
+               display: block !important;
+          }
+     }
+
+     .btn {
+          box-shadow: none !important;
+     }
+     
+     .show {
+          display: block;
+     }
+}
