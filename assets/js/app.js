@@ -31,12 +31,12 @@ const timeElement = document.getElementById("time_element");
 function currentTime() {
      let hour = d.getHours();
      let min = d.getMinutes();
-     let session = 'AM'
+     let session = 'am'
 
      if(hour === 0) {
           hour = 12
      } if (hour > 12) {
-          session = 'PM'
+          session = 'pm'
      }
 
      hour = (hour < 10) ? '0'+ hour : hour;
@@ -59,16 +59,16 @@ taskForm.addEventListener("submit", submitTasks);
 // creating delete and done button
 const nodeDiv = document.getElementsByClassName('card_footer');
 
+var doneButton = document.createElement('button');
+var deleteButton = document.createElement("button");
+
+var doneButtonText = document.createTextNode("Task done.")
+var deleteButtonText = document.createTextNode("Delete task.")
+
+doneButton.className = "btn btn-outline-success me-3 done_btn"
+deleteButton.className = "btn btn-outline-danger delete_btn"
+
 for (i = 0; i < nodeDiv.length; i ++) {
-     var doneButton = document.createElement('button');
-     var deleteButton = document.createElement("button");
-
-     var doneButtonText = document.createTextNode("Task done.")
-     var deleteButtonText = document.createTextNode("Delete task.")
-
-     doneButton.className = "btn btn-outline-success me-3 done_btn"
-     deleteButton.className = "btn btn-outline-danger delete_btn"
-
      doneButton.appendChild(doneButtonText)
      deleteButton.appendChild(deleteButtonText)
 
@@ -77,18 +77,11 @@ for (i = 0; i < nodeDiv.length; i ++) {
 
 // set task to be completed
 
-var doneButton = document.getElementsByClassName("done_btn")
+var taskDoneButton = document.getElementsByClassName("done_btn")
 
-for (i = 0; i < doneButton.length; i++) {
-     (function(i) {
-          "use strict";
-          doneButton[i].addEventListener("click", function() {
-               console.log("abc")
-          })
-     }(i));
-}
+// delete button 
 
-
+var deleteTaskButton = document.getElementsByClassName("delete_btn");
 
 function submitTasks(e) {
      e.preventDefault();
@@ -96,27 +89,32 @@ function submitTasks(e) {
      const taskNameValue = document.getElementById("taskName").value
      const taskDescriptionValue = document.getElementById("taskDescription").value
 
+     if ((taskNameValue && taskDescriptionValue).length >= 1) {
+          alert('Your task has been added')
+     }
+
      var listRow = document.getElementById("listRow");
      var colSystem = document.createElement('div');
 
      var task_description_container = document.createElement('div')
-     var task_description_container_footer = document.createElement('div')
 
      var taskNameHead = document.createElement("h2");
      var taskDescriptionContainer = document.createElement("p");
 
-     colSystem.className = "col-md-4 mt-3";
-     task_description_container.className = "bg-white shadow p-4 pb-0 rounded rounded-3 task_card";
-     task_description_container_footer.className = "p-3 border-top card_footer text-end";
+     var doneButton = document.createElement('button');
+     var deleteButton = document.createElement("button");
+
+     var doneButtonText = document.createTextNode("Task done.")
+     var deleteButtonText = document.createTextNode("Delete task.")
+
+     colSystem.className = "col-md-4 m-3 bg-white shadow p-4 rounded rounded-3 task_card";
 
      taskNameHead.className = "text-dark border-bottom";
      taskDescriptionContainer.className = "text-muted";
 
      listRow.appendChild(colSystem);
 
-     colSystem.appendChild(task_description_container);
-
-     task_description_container.append(taskNameHead, taskDescriptionContainer, task_description_container_footer);
+     colSystem.append(task_description_container, taskNameHead, taskDescriptionContainer, doneButton, deleteButton);
 
      taskNameHead.innerHTML = taskNameValue;
      taskDescriptionContainer.innerHTML = taskDescriptionValue;
@@ -126,29 +124,31 @@ function submitTasks(e) {
      document.getElementById("taskDescription").value = ''
 
 
-
-     var doneButton = document.createElement('button');
-     var deleteButton = document.createElement("button");
-
-     var doneButtonText = document.createTextNode("Task done.")
-     var deleteButtonText = document.createTextNode("Delete task.")
-
      doneButton.className = "btn btn-outline-success me-3 done_btn"
      deleteButton.className = "btn btn-outline-danger delete_btn"
 
      doneButton.appendChild(doneButtonText)
      deleteButton.appendChild(deleteButtonText)
 
-     task_description_container_footer.append(doneButton, deleteButton);
 
+     for (i = 0; i < taskDoneButton.length; i++) {
+          taskDoneButton[i].onclick = function() {
+               var parentContainer = this.parentElement;
 
-     for (i = 0; i < doneButton.length; i++) {
-          (function(i) {
-               doneButton[i].onclick = function() {
-                    var div = this.parentElement;
-                    return console.log(div)
-               }
-          })(i)
+               parentContainer.classList.add("done")
+          }
      }
 
+     for (i = 0; i < deleteTaskButton.length; i++) {
+          deleteTaskButton[i].onclick = function() {
+               var parentContainer = this.parentElement;
+
+               let confirmMessage = confirm("Are you sure you want to delete this task?")
+
+               if(confirmMessage === true) {
+                    parentContainer.classList.add("d-none");
+               }
+
+          }
+     }
 }
