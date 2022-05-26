@@ -32,6 +32,12 @@ body .modal_container {
           align-items: center;
 }
 
+@media screen and (max-width: 425px) {
+  body .modal_container {
+    height: 200px;
+  }
+}
+
 body .modal-body {
   width: 100% !important;
   -webkit-box-pack: center;
@@ -48,6 +54,12 @@ body .modal-body {
 
 body .modal-body .form_container {
   width: 50%;
+}
+
+@media screen and (max-width: 425px) {
+  body .modal-body .form_container {
+    width: 100%;
+  }
 }
 
 body .modal-body .form_container div {
@@ -77,11 +89,29 @@ body main header {
   left: 0%;
 }
 
-body main .added_tasks .col-md-4 .task_card {
-  height: 100% !important;
+@media screen and (max-width: 375px) {
+  body main header h4 {
+    font-size: 1.1rem;
+  }
 }
 
-body main .added_tasks .col-md-4 .task_card.done {
-  border-top: 3px solid green !important;
+@media screen and (max-width: 768px) {
+  body main .added_tasks .row {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  body main .added_tasks .row .col-md-4 {
+    width: 100%;
+    margin: 20px 0px !important;
+  }
+}
+
+body main .added_tasks .row .col-md-4.done {
+  border-top: 5px solid green !important;
 }
 /*# sourceMappingURL=style.css.map */

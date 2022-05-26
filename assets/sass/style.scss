@@ -25,6 +25,10 @@ body {
           display: flex;
           justify-content: center;
           align-items: center;
+
+          @media screen and (max-width: 425px) {
+               height: 200px;
+          }
      }
 
      .modal-body {
@@ -36,6 +40,10 @@ body {
 
           .form_container {
                width: 50%;
+
+               @media screen and (max-width: 425px) {
+                    width: 100%;
+               }
 
                div {
                     width: 100%;
@@ -62,15 +70,27 @@ body {
                width: 100%;
                top: 0%;
                left: 0%;
+               
+               @media screen and (max-width: 375px) {
+                    h4 {
+                         font-size: 1.1rem;
+                    }
+               }
           }
 
           .added_tasks {
-               .col-md-4 {
-                    .task_card {
-                         height: 100% !important;
+               .row {
+                    @media screen and (max-width: 768px) {
+                         flex-direction: column !important;
+                    }
+                    .col-md-4 {
+                         @media screen and (max-width: 768px) {
+                              width: 100%;
+                              margin: 20px 0px !important;
+                         }
 
                          &.done {
-                              border-top: 3px solid green !important;
+                              border-top: 5px solid green !important;
                          }
                     }
                }
