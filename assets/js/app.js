@@ -79,12 +79,15 @@ for (i = 0; i < nodeDiv.length; i ++) {
 
 var doneButton = document.getElementsByClassName("done_btn")
 
-for (i = 0; i < close.length; i++) {
-     doneButton[i].onclick = function() {
-          var div = this.parentElement;
-          div.classList.add("border-top", "border-success", "border-top-3");
-     }
+for (i = 0; i < doneButton.length; i++) {
+     (function(i) {
+          "use strict";
+          doneButton[i].addEventListener("click", function() {
+               console.log("abc")
+          })
+     }(i));
 }
+
 
 
 function submitTasks(e) {
@@ -139,10 +142,13 @@ function submitTasks(e) {
      task_description_container_footer.append(doneButton, deleteButton);
 
 
-     for (i = 0; i < close.length; i++) {
-          doneButton[i].onclick = function() {
-               var div = this.parentElement;
-               div.classList.add("border-top", "border-success", "border-top-3");
-          }
+     for (i = 0; i < doneButton.length; i++) {
+          (function(i) {
+               doneButton[i].onclick = function() {
+                    var div = this.parentElement;
+                    return console.log(div)
+               }
+          })(i)
      }
+
 }

@@ -77,7 +77,11 @@ body main header {
   left: 0%;
 }
 
-body main .added_tasks .col-md-4 .p-4 {
+body main .added_tasks .col-md-4 .task_card {
   height: 100% !important;
+}
+
+body main .added_tasks .col-md-4 .task_card.done {
+  border-top: 3px solid green !important;
 }
 /*# sourceMappingURL=style.css.map */
