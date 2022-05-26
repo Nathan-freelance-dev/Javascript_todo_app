@@ -66,8 +66,12 @@ body {
 
           .added_tasks {
                .col-md-4 {
-                    .p-4 {
+                    .task_card {
                          height: 100% !important;
+
+                         &.done {
+                              border-top: 3px solid green !important;
+                         }
                     }
                }
           }
