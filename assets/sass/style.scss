@@ -79,19 +79,13 @@ body {
           }
 
           .added_tasks {
-               .row {
-                    @media screen and (max-width: 768px) {
-                         flex-direction: column !important;
-                    }
-                    .col-md-4 {
-                         @media screen and (max-width: 768px) {
-                              width: 100%;
-                              margin: 20px 0px !important;
-                         }
+               #listRow {
+                    display: grid !important;
+                    grid-template-columns: 1fr 1fr 1fr !important;
+                    gap: 1rem;
 
-                         &.done {
-                              border-top: 5px solid green !important;
-                         }
+                    @media screen and (max-width: 425px) {
+                         grid-template-columns: 1fr !important;
                     }
                }
           }
