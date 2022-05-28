@@ -95,23 +95,18 @@ body main header {
   }
 }
 
-@media screen and (max-width: 768px) {
-  body main .added_tasks .row {
-    -webkit-box-orient: vertical !important;
-    -webkit-box-direction: normal !important;
-        -ms-flex-direction: column !important;
-            flex-direction: column !important;
-  }
+body main .added_tasks #listRow {
+  display: -ms-grid !important;
+  display: grid !important;
+  -ms-grid-columns: 1fr 1fr 1fr !important;
+      grid-template-columns: 1fr 1fr 1fr !important;
+  gap: 1rem;
 }
 
-@media screen and (max-width: 768px) {
-  body main .added_tasks .row .col-md-4 {
-    width: 100%;
-    margin: 20px 0px !important;
+@media screen and (max-width: 425px) {
+  body main .added_tasks #listRow {
+    -ms-grid-columns: 1fr !important;
+        grid-template-columns: 1fr !important;
   }
-}
-
-body main .added_tasks .row .col-md-4.done {
-  border-top: 5px solid green !important;
 }
 /*# sourceMappingURL=style.css.map */
