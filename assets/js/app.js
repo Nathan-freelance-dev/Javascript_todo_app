@@ -47,7 +47,6 @@
           return { taskName, taskDescription };
      }
 
-
 // creating the task DOM element
 
      const createTaskElement = ({taskName, taskDescription}) => {
@@ -55,20 +54,34 @@
                const taskColDiv = document.createElement("div");
                const taskNameEl = document.createElement("h3");
                const taskDescriptionEl = document.createElement("p");
+               const taskDoneButton = document.createElement("button");
+               const taskDeleteButton = document.createElement("button");
 
           // adding innerText to created DOM elements
                taskNameEl.innerText = taskName;
                taskDescriptionEl.innerText = taskDescription;
+               taskDoneButton.innerText = "Check";
+               taskDeleteButton.innerText = "Delete";
 
           // adding created DOM elements to main DOM elements
                addedTaskRow.appendChild(taskColDiv);
-               taskColDiv.append(taskNameEl, taskDescriptionEl);
+               taskColDiv.append(taskNameEl, taskDescriptionEl, taskDoneButton, taskDeleteButton);
 
           // adding className to each of the created DOM elements
-               taskColDiv.className = "p-4 rounded border rounded-3";
+               taskColDiv.className = "p-4 rounded task_col border rounded-3";
                taskNameEl.className = "text-dark border-bottom pb-2 fw-bold";
                taskDescriptionEl.className = "mt-3 text-muted";
-     };
+               taskDoneButton.className = "me-2 btn btn-outline-success"
+               taskDeleteButton.className = "btn btn-outline-danger"
+
+               taskDeleteButton.addEventListener("click", () => {
+                    let taskNode = taskColDiv;
+                    taskNode.classList.add("d-none")
+
+                    // if(taskNode === "task_col") {
+                    // }
+               })
+          };
 
 tasks.forEach(createTaskElement);
 
